@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NALB Residence – Carte de visite digitale</title>
+<meta name="description" content="NALB Residence / NALB Familiale : appartements meublés haut de gamme. Appelez, écrivez sur WhatsApp ou enregistrez notre contact.">
+<meta name="theme-color" content="#0B3C85">
+<meta property="og:title" content="NALB Residence – Carte de visite digitale">
+<meta property="og:description" content="Appartements meublés haut de gamme. Contactez-nous en un clic.">
+<meta property="og:image" content="https://lookfath.github.io/nalbfamilialeweb/images/logonalb.png">
+<link rel="icon" href="images/logonalb.png">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+<style>
+:root{
+  --royal:#0B3C85;
+  --sky:#5B9BD5;
+  --gold:#F09217;
+  --ivory:#FDFBF7;
+  --ink:#1b2438;
+  --muted:#5d667a;
+  --line:#e6e2d8;
+  --wa:#047857;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{-webkit-text-size-adjust:100%}
+body{
+  font-family:"Plus Jakarta Sans",system-ui,sans-serif;
+  color:var(--ink);
+  background:#e9eef7;
+  min-height:100vh;
+  display:flex;justify-content:center;
+}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--gold);outline-offset:2px;border-radius:8px}
+
+.card{
+  width:100%;max-width:460px;
+  background:var(--ivory);
+  min-height:100vh;
+  position:relative;
+  overflow:hidden;
+  padding-bottom:28px;
+}
+@media(min-width:520px){
+  body{padding:28px 0}
+  .card{min-height:0;border-radius:28px;box-shadow:0 24px 60px rgba(11,60,133,.22)}
+}
+
+/* ----- En-tête : le soleil et la vague du logo ----- */
+.hero{position:relative;height:210px;background:var(--royal);overflow:hidden}
+.sun{
+  position:absolute;right:-58px;top:-78px;
+  width:230px;height:230px;border-radius:50%;
+  border:14px solid var(--gold);
+  border-left-color:transparent;border-bottom-color:transparent;
+  transform:rotate(18deg);
+}
+.hero svg{position:absolute;left:0;bottom:-1px;width:100%;height:70px;display:block}
+
+.logo-wrap{
+  position:relative;z-index:2;
+  width:176px;margin:-98px auto 0;
+  background:#fff;border-radius:26px;padding:8px;
+  box-shadow:0 14px 34px rgba(11,60,133,.2);
+}
+.logo-wrap img{display:block;width:100%;height:auto;border-radius:18px}
+
+.ident{text-align:center;padding:22px 24px 0}
+.ident h1{font-family:"Playfair Display",serif;font-weight:700;font-size:2rem;line-height:1.1;color:var(--royal)}
+.ident .sub{margin-top:6px;font-weight:600;font-size:.95rem;color:var(--ink)}
+.ident .tag{margin:10px auto 0;max-width:30ch;font-size:.9rem;line-height:1.5;color:var(--muted)}
+
+/* ----- Boutons principaux ----- */
+.main-actions{display:grid;gap:10px;padding:22px 22px 0}
+.btn{
+  display:flex;align-items:center;justify-content:center;gap:10px;
+  min-height:52px;padding:0 18px;border-radius:16px;
+  font:inherit;font-weight:700;font-size:1rem;cursor:pointer;border:2px solid transparent;
+  transition:transform .15s ease, background-color .15s ease;
+}
+.btn:active{transform:scale(.98)}
+.btn-wa{background:var(--wa);color:#fff}
+.btn-wa:hover{background:#065f46}
+.btn-site{background:#fff;color:var(--royal);border-color:var(--royal)}
+.btn-site:hover{background:var(--royal);color:#fff}
+.btn i{font-size:1.2rem}
+
+/* ----- Blocs ----- */
+.block{margin:26px 22px 0}
+.block h2{font-family:"Playfair Display",serif;font-size:1.15rem;color:var(--royal);margin-bottom:6px}
+
+.contacts{list-style:none;border-top:2px solid var(--gold)}
+.contacts li{
+  display:flex;align-items:center;justify-content:space-between;gap:12px;
+  padding:14px 0;border-bottom:1px solid var(--line);
+}
+.contacts .who{min-width:0}
+.contacts .lbl{display:block;font-size:.8rem;color:var(--muted)}
+.contacts .val{display:block;font-weight:700;font-size:1rem;overflow-wrap:anywhere}
+.pair{display:flex;gap:8px;flex-shrink:0}
+.chip{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  min-height:44px;min-width:44px;padding:0 14px;border-radius:999px;
+  font:inherit;font-weight:600;font-size:.85rem;cursor:pointer;
+  border:1.5px solid var(--royal);color:var(--royal);background:#fff;
+}
+.chip:hover{background:var(--royal);color:#fff}
+.chip.wa{border-color:var(--wa);color:var(--wa)}
+.chip.wa:hover{background:var(--wa);color:#fff}
+.chip.icon-only{padding:0;width:44px}
+
+/* ----- Réseaux ----- */
+.socials{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin-top:10px}
+.soc{
+  display:flex;flex-direction:column;align-items:center;gap:8px;
+  padding:16px 6px;border-radius:18px;background:#fff;border:1px solid var(--line);
+  font-weight:600;font-size:.85rem;
+}
+.soc i{font-size:1.5rem}
+.soc.fb i{color:#1877f2}
+.soc.ig i{color:#d6249f}
+.soc.tt i{color:#111}
+.soc:hover{border-color:var(--royal)}
+
+/* ----- Outils ----- */
+.tools{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.tools .btn{min-height:48px;font-size:.92rem;border-radius:14px}
+.btn-save{grid-column:1/-1;background:var(--gold);color:#1b1305}
+.btn-save:hover{background:#d97f0a}
+.btn-ghost{background:#fff;color:var(--royal);border-color:var(--line)}
+.btn-ghost:hover{border-color:var(--royal)}
+
+.credit{margin:28px 22px 0;text-align:center;font-size:.8rem;color:var(--muted)}
+.credit a{color:var(--royal);font-weight:600;text-decoration:underline;text-underline-offset:3px}
+
+/* ----- QR ----- */
+dialog{
+  border:none;border-radius:24px;padding:24px;width:min(88vw,340px);
+  margin:auto;text-align:center;background:#fff;color:var(--ink);
+  box-shadow:0 30px 80px rgba(0,0,0,.35);
+}
+dialog::backdrop{background:rgba(11,32,70,.6)}
+dialog h3{font-family:"Playfair Display",serif;color:var(--royal);font-size:1.2rem}
+dialog p{font-size:.85rem;color:var(--muted);margin:6px 0 16px}
+#qr{display:flex;justify-content:center;padding:12px;border:1px solid var(--line);border-radius:16px;width:max-content;margin:0 auto}
+#qr img,#qr canvas{display:block;max-width:100%;height:auto}
+dialog .btn{margin-top:18px;width:100%;min-height:46px}
+
+/* ----- Message ----- */
+#toast{
+  position:fixed;left:50%;bottom:24px;transform:translateX(-50%) translateY(20px);
+  background:var(--ink);color:#fff;padding:12px 18px;border-radius:12px;
+  font-size:.9rem;font-weight:600;opacity:0;pointer-events:none;transition:.25s;z-index:20;
+}
+#toast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+
+@media(prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+
+<main class="card">
+
+  <header class="hero" aria-hidden="true">
+    <div class="sun"></div>
+    <svg viewBox="0 0 360 70" preserveAspectRatio="none">
+      <path d="M0,34 C90,6 170,60 360,22 L360,70 L0,70 Z" fill="#5B9BD5"/>
+      <path d="M0,48 C100,22 200,70 360,38 L360,70 L0,70 Z" fill="#FDFBF7"/>
+    </svg>
+  </header>
+
+  <div class="logo-wrap">
+    <img src="images/logonalb.png" alt="Logo NALB Residence – NALB Familiale" width="320" height="320">
+  </div>
+
+  <section class="ident">
+    <h1>NALB Residence</h1>
+    <p class="sub">NALB Familiale</p>
+    <p class="tag">Appartements meublés haut de gamme : le confort, l'élégance et la sérénité.</p>
+  </section>
+
+  <section class="main-actions" aria-label="Actions rapides">
+    <a class="btn btn-wa" id="wa-main" target="_blank" rel="noopener"><i class="fa-brands fa-whatsapp"></i> Écrire sur WhatsApp</a>
+    <a class="btn btn-site" href="https://lookfath.github.io/nalbfamilialeweb/" target="_blank" rel="noopener"><i class="fa-solid fa-building"></i> Voir nos appartements</a>
+  </section>
+
+  <section class="block">
+    <h2>Nous joindre</h2>
+    <ul class="contacts">
+      <li>
+        <div class="who"><span class="lbl">Téléphone et WhatsApp</span><span class="val">07 14 98 96 49</span></div>
+        <div class="pair">
+          <a class="chip" href="tel:+2250714989649" aria-label="Appeler le 07 14 98 96 49"><i class="fa-solid fa-phone"></i> Appeler</a>
+          <a class="chip wa icon-only" data-wa="2250714989649" target="_blank" rel="noopener" aria-label="WhatsApp 07 14 98 96 49"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </li>
+      <li>
+        <div class="who"><span class="lbl">Téléphone et WhatsApp</span><span class="val">07 77 55 48 24</span></div>
+        <div class="pair">
+          <a class="chip" href="tel:+2250777554824" aria-label="Appeler le 07 77 55 48 24"><i class="fa-solid fa-phone"></i> Appeler</a>
+          <a class="chip wa icon-only" data-wa="2250777554824" target="_blank" rel="noopener" aria-label="WhatsApp 07 77 55 48 24"><i class="fa-brands fa-whatsapp"></i></a>
+        </div>
+      </li>
+      <li>
+        <div class="who"><span class="lbl">E-mail</span><span class="val">helenetetteh16@gmail.com</span></div>
+        <div class="pair">
+          <a class="chip icon-only" href="mailto:helenetetteh16@gmail.com" aria-label="Écrire un e-mail"><i class="fa-solid fa-envelope"></i></a>
+        </div>
+      </li>
+    </ul>
+  </section>
+
+  <section class="block">
+    <h2>Suivez-nous</h2>
+    <div class="socials">
+      <a class="soc fb" href="https://www.facebook.com/profile.php?id=61553547556548" target="_blank" rel="noopener"><i class="fa-brands fa-facebook-f"></i>Facebook</a>
+      <a class="soc ig" href="https://www.instagram.com/nalbfamiliale?vrfl=MjllcGN4cmF6aWg0" target="_blank" rel="noopener"><i class="fa-brands fa-instagram"></i>Instagram</a>
+      <a class="soc tt" href="https://www.tiktok.com/@nalb.familiale?_r=1&_t=ZS-9APymLRCPCO" target="_blank" rel="noopener"><i class="fa-brands fa-tiktok"></i>TikTok</a>
+    </div>
+  </section>
+
+  <section class="block">
+    <h2>Gardez cette carte</h2>
+    <div class="tools">
+      <button class="btn btn-save" id="save"><i class="fa-solid fa-address-book"></i> Enregistrer le contact</button>
+      <button class="btn btn-ghost" id="share"><i class="fa-solid fa-share-nodes"></i> Partager</button>
+      <button class="btn btn-ghost" id="qr-open"><i class="fa-solid fa-qrcode"></i> Code QR</button>
+    </div>
+  </section>
+
+  <p class="credit">Carte conçue par <a href="https://lookfath.github.io/digitalqueenstudioweb/" target="_blank" rel="noopener">Digital Queen Studio</a></p>
+</main>
+
+<dialog id="qr-dialog" aria-labelledby="qr-title">
+  <h3 id="qr-title">Code QR de la carte</h3>
+  <p>Scannez-le avec un téléphone pour ouvrir cette carte.</p>
+  <div id="qr"></div>
+  <button class="btn btn-ghost" id="qr-close">Fermer</button>
+</dialog>
+
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js"></script>
+<script>
+/* ===== Réglages ===== */
+const CARD_URL = "https://lookfath.github.io/nalbfamilialeweb/carte.html";
+const SITE_URL = "https://lookfath.github.io/nalbfamilialeweb/";
+const MSG = "Bonjour NALB Residence, je souhaite obtenir des informations sur vos appartements.";
+const waLink = n => `https://wa.me/${n}?text=${encodeURIComponent(MSG)}`;
+
+/* ===== Liens WhatsApp ===== */
+document.getElementById("wa-main").href = waLink("2250714989649");
+document.querySelectorAll("[data-wa]").forEach(a => a.href = waLink(a.dataset.wa));
+
+/* ===== Message court ===== */
+const toastEl = document.getElementById("toast");
+let toastTimer;
+function toast(t){
+  toastEl.textContent = t; toastEl.classList.add("show");
+  clearTimeout(toastTimer); toastTimer = setTimeout(() => toastEl.classList.remove("show"), 2200);
+}
+
+/* ===== Enregistrer le contact (.vcf) ===== */
+document.getElementById("save").addEventListener("click", () => {
+  const vcf = [
+    "BEGIN:VCARD",
+    "VERSION:3.0",
+    "N:;NALB Residence;;;",
+    "FN:NALB Residence",
+    "ORG:NALB Residence;NALB Familiale",
+    "TITLE:Appartements meublés haut de gamme",
+    "TEL;TYPE=CELL,VOICE:+2250714989649",
+    "TEL;TYPE=CELL,VOICE:+2250777554824",
+    "EMAIL;TYPE=INTERNET:helenetetteh16@gmail.com",
+    "URL:" + SITE_URL,
+    "URL;TYPE=Facebook:https://www.facebook.com/profile.php?id=61553547556548",
+    "URL;TYPE=Instagram:https://www.instagram.com/nalbfamiliale",
+    "URL;TYPE=TikTok:https://www.tiktok.com/@nalb.familiale",
+    "END:VCARD"
+  ].join("\r\n");
+  const blob = new Blob([vcf], { type: "text/vcard;charset=utf-8" });
+  const a = document.createElement("a");
+  a.href = URL.createObjectURL(blob);
+  a.download = "nalb-residence.vcf";
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(a.href), 1000);
+  toast("Contact prêt à être enregistré");
+});
+
+/* ===== Partager ===== */
+document.getElementById("share").addEventListener("click", async () => {
+  const data = { title: "NALB Residence", text: "Carte de visite de NALB Residence", url: CARD_URL };
+  if (navigator.share) {
+    try { await navigator.share(data); } catch (e) {}
+  } else {
+    try { await navigator.clipboard.writeText(CARD_URL); toast("Lien copié"); }
+    catch (e) { toast("Copiez le lien dans la barre d'adresse"); }
+  }
+});
+
+/* ===== Code QR ===== */
+const dlg = document.getElementById("qr-dialog");
+let qrDone = false;
+document.getElementById("qr-open").addEventListener("click", () => {
+  if (!qrDone && window.QRCode) {
+    new QRCode(document.getElementById("qr"), {
+      text: CARD_URL, width: 220, height: 220,
+      colorDark: "#0B3C85", colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.M
+    });
+    qrDone = true;
+  }
+  dlg.showModal();
+});
+document.getElementById("qr-close").addEventListener("click", () => dlg.close());
+dlg.addEventListener("click", e => { if (e.target === dlg) dlg.close(); });
+</script>
+</body>
+</html>
